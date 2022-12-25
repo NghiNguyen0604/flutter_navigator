@@ -29,15 +29,18 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.tabs[_currentIndex].label ?? ''),
-      ),
-      body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        items: widget.tabs,
-        onTap: (index) => _onItemTapped(context, index),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(widget.tabs[_currentIndex].label ?? ''),
+        ),
+        body: widget.child,
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          items: widget.tabs,
+          onTap: (index) => _onItemTapped(context, index),
+        ),
       ),
     );
   }

@@ -20,10 +20,11 @@ class TestDriveReservationPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(label),
+
             const Padding(padding: EdgeInsets.all(4)),
             TextButton(
               onPressed: () {
-                context.pushReplacement(AppRouteEnum.testdrive.path);
+                context.goNamed(AppRouteEnum.testdrive.name);
               },
               child: const Text('Back to Test Drive List Page.'),
             ),

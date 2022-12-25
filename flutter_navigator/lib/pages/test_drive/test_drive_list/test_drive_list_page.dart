@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_navigator/app_route/app_route_enum.dart';
+import 'package:go_router/go_router.dart';
 
 class TestDriveListPage extends StatelessWidget {
   const TestDriveListPage({required this.label, Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class TestDriveListPage extends StatelessWidget {
             Text(label),
             const Padding(padding: EdgeInsets.all(4)),
             TextButton(
-              onPressed: () => {},
+              onPressed: () => {context.goNamed(AppRouteEnum.reservation.name)},
               child: const Text('Go to Test Drive Reservation Page.'),
             ),
           ],

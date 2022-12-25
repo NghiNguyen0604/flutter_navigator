@@ -3,6 +3,7 @@ import 'package:flutter_navigator/pages/login/login_controller.dart';
 import 'package:flutter_navigator/pages/login/login_page.dart';
 import 'package:flutter_navigator/pages/splash/splash_page.dart';
 import 'package:flutter_navigator/pages/test_drive/test_drive_list/test_drive_list_page.dart';
+import 'package:flutter_navigator/pages/test_drive/test_drive_reservation/test_drive_reservation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:one_context/one_context.dart';
 
@@ -64,7 +65,6 @@ class AppRouteController {
           },
           routes: [
             GoRoute(
-              parentNavigatorKey: AppRouteController.instance.tabKey,
               path: AppRouteEnum.home.path,
               name: AppRouteEnum.home.name,
               pageBuilder: (context, state) => NoTransitionPage(
@@ -75,7 +75,6 @@ class AppRouteController {
               ),
             ),
             GoRoute(
-              parentNavigatorKey: AppRouteController.instance.tabKey,
               path: AppRouteEnum.testdrive.path,
               name: AppRouteEnum.testdrive.name,
               pageBuilder: (context, state) => NoTransitionPage(
@@ -86,7 +85,6 @@ class AppRouteController {
               ),
             ),
             GoRoute(
-              parentNavigatorKey: AppRouteController.instance.tabKey,
               path: AppRouteEnum.request.path,
               name: AppRouteEnum.request.name,
               pageBuilder: (context, state) => NoTransitionPage(
@@ -95,11 +93,11 @@ class AppRouteController {
                   label: state.fullpath ?? '',
                 ),
               ),
+              
             ),
           ],
         ),
         GoRoute(
-          parentNavigatorKey: AppRouteController.instance.rootKey,
           path: AppRouteEnum.login.path,
           name: AppRouteEnum.login.name,
           pageBuilder: (context, state) => NoTransitionPage(
@@ -111,12 +109,21 @@ class AppRouteController {
           ),
         ),
         GoRoute(
-          parentNavigatorKey: AppRouteController.instance.rootKey,
           path: AppRouteEnum.splash.path,
           name: AppRouteEnum.splash.name,
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
             child: SplashPage(
+              label: state.fullpath ?? '',
+            ),
+          ),
+        ),
+        GoRoute(
+          path: AppRouteEnum.reservation.path,
+          name: AppRouteEnum.reservation.name,
+          pageBuilder: (context, state) => NoTransitionPage(
+            key: state.pageKey,
+            child: TestDriveReservationPage(
               label: state.fullpath ?? '',
             ),
           ),

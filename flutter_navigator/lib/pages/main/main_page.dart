@@ -23,7 +23,7 @@ class _MainPageState extends State<MainPage> {
 
   void _onItemTapped(BuildContext context, int tabIndex) {
     if (tabIndex != _currentIndex) {
-      context.pushNamed(widget.tabs[tabIndex].name);
+      context.goNamed(widget.tabs[tabIndex].name);
     }
   }
 

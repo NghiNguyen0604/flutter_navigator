@@ -7,10 +7,10 @@ goLoginOrHomeView(BuildContext context) {
   final _controller = LoginController();
   _controller.status.listen((status) {
     if (status) {
-      _controller.state!.context.go(AppRouteEnum.home.path);
+      _controller.state!.context.pushReplacementNamed(AppRouteEnum.home.name);
     }
   });
-  context.go(AppRouteEnum.login.path, extra: _controller);
+  context.pushReplacementNamed(AppRouteEnum.login.name, extra: _controller);
 }
 
 class SplashPage extends StatefulWidget {

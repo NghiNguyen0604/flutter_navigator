@@ -64,6 +64,7 @@ class AppRouteController {
           },
           routes: [
             GoRoute(
+              parentNavigatorKey: AppRouteController.instance.tabKey,
               path: AppRouteEnum.home.path,
               name: AppRouteEnum.home.name,
               pageBuilder: (context, state) => NoTransitionPage(
@@ -74,6 +75,7 @@ class AppRouteController {
               ),
             ),
             GoRoute(
+              parentNavigatorKey: AppRouteController.instance.tabKey,
               path: AppRouteEnum.testdrive.path,
               name: AppRouteEnum.testdrive.name,
               pageBuilder: (context, state) => NoTransitionPage(
@@ -84,6 +86,7 @@ class AppRouteController {
               ),
             ),
             GoRoute(
+              parentNavigatorKey: AppRouteController.instance.tabKey,
               path: AppRouteEnum.request.path,
               name: AppRouteEnum.request.name,
               pageBuilder: (context, state) => NoTransitionPage(
@@ -96,6 +99,7 @@ class AppRouteController {
           ],
         ),
         GoRoute(
+          parentNavigatorKey: AppRouteController.instance.rootKey,
           path: AppRouteEnum.login.path,
           name: AppRouteEnum.login.name,
           pageBuilder: (context, state) => NoTransitionPage(
@@ -107,6 +111,7 @@ class AppRouteController {
           ),
         ),
         GoRoute(
+          parentNavigatorKey: AppRouteController.instance.rootKey,
           path: AppRouteEnum.splash.path,
           name: AppRouteEnum.splash.name,
           pageBuilder: (context, state) => NoTransitionPage(

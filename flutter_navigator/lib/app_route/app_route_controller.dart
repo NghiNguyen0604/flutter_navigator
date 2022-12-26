@@ -102,10 +102,7 @@ class AppRouteController {
           name: AppRouteEnum.login.name,
           pageBuilder: (context, state) => NoTransitionPage(
             key: state.pageKey,
-            child: LoginPage(
-              label: state.fullpath ?? '',
-              controller: state.extra as LoginController,
-            ),
+            child: createLoginPage(controller: state.extra as LoginController),
           ),
         ),
         GoRoute(

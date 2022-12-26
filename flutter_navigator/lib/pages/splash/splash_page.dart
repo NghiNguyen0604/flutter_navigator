@@ -1,16 +1,22 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_navigator/app_route/app_route_enum.dart';
 import 'package:flutter_navigator/pages/login/login_controller.dart';
 import 'package:go_router/go_router.dart';
 
-goLoginOrHomeView(BuildContext context) {
-  final _controller = LoginController();
-  _controller.status.listen((status) {
+Future<String> goLoginOrHomeView(LoginController controller) async {
+  final c = Completer<String>();
+  final controller = LoginController();
+  // auto login
+  // do sign in
+  controller.status.take(1).listen((status) {
     if (status) {
-      _controller.state!.context.pushReplacementNamed(AppRouteEnum.home.name);
+      c.complete(AppRouteEnum.home.name);
     }
   });
-  context.pushReplacementNamed(AppRouteEnum.login.name, extra: _controller);
+  c.complete(AppRouteEnum.login.name);
+  return c.future;
 }
 
 class SplashPage extends StatefulWidget {
@@ -31,8 +37,10 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 
-  void checkLogin() {
-    goLoginOrHomeView(context);
+  Future<void> checkLogin() async {
+    final loginController = LoginController();
+    final routeName = await goLoginOrHomeView(loginController);
+    context.goNamed(routeName, extra: loginController);
   }
 
   @override

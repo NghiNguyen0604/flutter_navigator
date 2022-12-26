@@ -6,11 +6,20 @@ import 'package:mvc_pattern/mvc_pattern.dart';
 
 Widget createLoginPage({
   required LoginController controller,
-}) =>
-    LoginPage(
+}) {
+  controller.status.listen(
+    (status) {
+      if (status) {
+        controller.state!.context.pushReplacementNamed(AppRouteEnum.home.name);
+      }
+    },
+  );
+  return LoginPage(
       label: 'Login',
       controller: controller,
     );
+}
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({required this.label, Key? key, required this.controller})
